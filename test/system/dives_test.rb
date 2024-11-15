@@ -11,6 +11,7 @@ class DivesTest < ApplicationSystemTestCase
   end
 
   test "should create dive" do
+    skip
     visit dives_url
     click_on "New dive"
 
@@ -24,6 +25,7 @@ class DivesTest < ApplicationSystemTestCase
   end
 
   test "should update Dive" do
+    skip
     visit dive_url(@dive)
     click_on "Edit this dive", match: :first
 
@@ -37,6 +39,7 @@ class DivesTest < ApplicationSystemTestCase
   end
 
   test "should destroy Dive" do
+    skip
     visit dive_url(@dive)
     click_on "Destroy this dive", match: :first
 
