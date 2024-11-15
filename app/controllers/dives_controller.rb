@@ -66,11 +66,17 @@ class DivesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dive_params
-      params.require(:dive).permit(
+      p = params.require(:dive).permit(
         :diver,
         :date,
         :dive_location_id,
         dive_location_attributes: [ :site_name, :location_type, :latitude, :longitude ]
       )
+
+      if params[:dive][:location_selection] == 'existing'
+        p[:dive_location_attributes] = {}
+      end
+
+      p
     end
 end
