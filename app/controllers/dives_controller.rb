@@ -73,7 +73,7 @@ class DivesController < ApplicationController
         dive_location_attributes: [ :site_name, :location_type, :latitude, :longitude ]
       )
 
-      if params[:dive][:location_selection] == 'existing'
+      if params[:dive][:location_selection] == "existing"
         p[:dive_location_attributes] = {}
       end
 
