@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @dive %>
+
+<div>
+  <%= link_to "Edit this dive", edit_dive_path(@dive) %> |
+  <%= link_to "Back to dives", dives_path %>
+
+  <%= button_to "Destroy this dive", @dive, method: :delete %>
+</div>

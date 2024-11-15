@@ -1,0 +1,2 @@
+class DiveLocation < ApplicationRecord
+end

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Dives" %>
+
+<h1>Dives</h1>
+
+<div id="dives">
+  <% @dives.each do |dive| %>
+    <%= render dive %>
+    <p>
+      <%= link_to "Show this dive", dive %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New dive", new_dive_path %>

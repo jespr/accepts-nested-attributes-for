@@ -1,0 +1,50 @@
+<%= form_with(model: dive) do |form| %>
+  <% if dive.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(dive.errors.count, "error") %> prohibited this dive from being saved:</h2>
+
+      <ul>
+        <% dive.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :diver, style: "display: block" %>
+    <%= form.text_field :diver %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <h2>Dive Location</h2>
+  <%= form.fields_for :dive_location do |dive_location_form| %>
+    <div>
+      <%= dive_location_form.label :site_name, style: "display: block" %>
+      <%= dive_location_form.text_field :site_name %>
+    </div>
+
+    <div>
+      <%= dive_location_form.label :location_type, style: "display: block" %>
+      <%= dive_location_form.text_field :location_type %>
+    </div>
+
+    <div>
+      <%= dive_location_form.label :latitude, style: "display: block" %>
+      <%= dive_location_form.text_field :latitude %>
+    </div>
+
+    <div>
+      <%= dive_location_form.label :longitude, style: "display: block" %>
+      <%= dive_location_form.text_field :longitude %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<% content_for :title, "New dive" %>
+
+<h1>New dive</h1>
+
+<%= render "form", dive: @dive %>
+
+<br>
+
+<div>
+  <%= link_to "Back to dives", dives_path %>
+</div>

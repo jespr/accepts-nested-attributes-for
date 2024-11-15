@@ -1,0 +1,12 @@
+<% content_for :title, "Editing dive" %>
+
+<h1>Editing dive</h1>
+
+<%= render "form", dive: @dive %>
+
+<br>
+
+<div>
+  <%= link_to "Show this dive", @dive %> |
+  <%= link_to "Back to dives", dives_path %>
+</div>
