@@ -22,27 +22,54 @@
   </div>
 
   <h2>Dive Location</h2>
-  <%= form.fields_for :dive_location do |dive_location_form| %>
+
+  <div data-controller="existing-or-new">
     <div>
-      <%= dive_location_form.label :site_name, style: "display: block" %>
-      <%= dive_location_form.text_field :site_name %>
+      <%= form.radio_button :location_selection, 'existing',
+          checked: true,
+          data: {
+            existing_or_new_target: "radio",
+            action: "change->existing-or-new#toggle"
+          } %>
+      <%= form.label :location_selection_existing, 'Select Existing Location' %>
+
+      <%= form.radio_button :location_selection, 'new',
+          data: {
+            existing_or_new_target: "radio",
+            action: "change->existing-or-new#toggle"
+          } %>
+      <%= form.label :location_selection_new, 'Create New Location' %>
     </div>
 
-    <div>
-      <%= dive_location_form.label :location_type, style: "display: block" %>
-      <%= dive_location_form.text_field :location_type %>
+    <div id="existing_location_fields" data-existing-or-new-target="existing">
+      <%= form.label :dive_location_id, 'Select Location', style: "display: block" %>
+      <%= form.collection_select :dive_location_id, DiveLocation.all, :id, :site_name %>
     </div>
 
-    <div>
-      <%= dive_location_form.label :latitude, style: "display: block" %>
-      <%= dive_location_form.text_field :latitude %>
-    </div>
+    <div id="new_location_fields" data-existing-or-new-target="new" style="display: none;">
+      <%= form.fields_for :dive_location do |dive_location_form| %>
+        <div>
+          <%= dive_location_form.label :site_name, style: "display: block" %>
+          <%= dive_location_form.text_field :site_name %>
+        </div>
 
-    <div>
-      <%= dive_location_form.label :longitude, style: "display: block" %>
-      <%= dive_location_form.text_field :longitude %>
+        <div>
+          <%= dive_location_form.label :location_type, style: "display: block" %>
+          <%= dive_location_form.text_field :location_type %>
+        </div>
+
+        <div>
+          <%= dive_location_form.label :latitude, style: "display: block" %>
+          <%= dive_location_form.text_field :latitude %>
+        </div>
+
+        <div>
+          <%= dive_location_form.label :longitude, style: "display: block" %>
+          <%= dive_location_form.text_field :longitude %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 
   <div>
     <%= form.submit %>
